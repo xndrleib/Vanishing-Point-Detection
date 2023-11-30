@@ -38,33 +38,10 @@ It is assumed that the data folder is structured as follows:
 
 The quality of the solution is assessed using an angular metric. The proximity of the predicted point $A$ to the true value $B$ is determined by the angle $\alpha$ between the vectors drawn to these points from the point $O$, as demonstrated in the figure below.
 
-$$
-\alpha = \arccos \frac{\left \langle \xi, \, \eta \right \rangle}{\|\xi\|\|\eta\|},
-$$
+
+$$\alpha = \arccos \frac{\left \langle \xi, \, \eta \right \rangle}{\|\xi\|\|\eta\|},$$
+
 where
-$$
-\xi = \begin{bmatrix} 
-A_x \\ 
-A_y \\ 
-0
-\end{bmatrix}
--
-\begin{bmatrix} 
-n/2 \\ 
-m/2 \\ 
-\sqrt{\left( n/2 \right)^2 + \left( m/2 \right)^2} 
-\end{bmatrix}, \quad
-\eta = \begin{bmatrix} 
-B_x \\ 
-B_y \\ 
-0
-\end{bmatrix}
--
-\begin{bmatrix} 
-n/2 \\ 
-m/2 \\ 
-\sqrt{\left( n/2 \right)^2 + \left( m/2 \right)^2}
-\end{bmatrix}.
-$$
+$$\xi = \begin{bmatrix} A_x \\ A_y \\ 0 \end{bmatrix} - \begin{bmatrix} n/2 \\ m/2 \\ \sqrt{\left( n/2 \right)^2 + \left( m/2 \right)^2} \end{bmatrix}, \quad \eta = \begin{bmatrix} B_x \\ B_y \\ 0 \end{bmatrix} - \begin{bmatrix} n/2 \\ m/2 \\ \sqrt{\left( n/2 \right)^2 + \left( m/2 \right)^2} \end{bmatrix}. $$
 
 ![Metrics](metrics.png)
