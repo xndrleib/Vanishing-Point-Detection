@@ -34,5 +34,5 @@ python test_generation/test_generation.py --s path_to_dataset --d path_to_save_n
 
 Предполагается, что папка с данными устроена следующим образом:
 - dataset
-- - markup.json
-- - source
+-     markup.json
+-     source
