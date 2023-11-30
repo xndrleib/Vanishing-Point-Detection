@@ -583,6 +583,3 @@ cython_debug/
 
 # Test Data Folder
 test/
-
-# Predicted Answers and Test Metrics
-res/

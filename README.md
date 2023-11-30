@@ -1,22 +1,16 @@
 # Vanishing-point-detection
 
-В этом репозитории размещен код, написанный для соревнования
-по поиску точки схода на изображениях с помощью [преобразования Хафа](https://en.wikipedia.org/wiki/Hough_transform).
+This repository contains code written for a competition in vanishing point detection in images using [Hough transform](https://en.wikipedia.org/wiki/Hough_transform).
 
-## Описание проекта
+## Project Description
 
-Задача поиска точки схода на изображениях имеет большую важность и широкую область применения. 
-Она возникает при разработке систем для беспилотников (локализация на дорожном полотне, самокалибровка), 
-при анализе освещения в сцене (анализ гистограмм цветности) и при исправлении проективных искажений.
+The task of detecting the vanishing point in images is of great importance and has a wide range of applications. It arises in the development of systems for unmanned vehicles (localization on the road surface, self-calibration), in the analysis of scene lighting (analysis of color histograms), and in correcting projective distortions.
 
-Для оценки качества решения используется угловая метрика. ОПИСАТЬ ЧТО ЭТО
+800 labeled images of the road surface from a vehicle camera, containing coordinates of the vanishing point, are used as data for constructing and testing the algorithm. During testing, the images are augmented by rotation.
 
-В качестве данных для построения и тестирования алгоритма используются 800 размеченных изображений дорожного полотна 
-с камеры автомобиля, содержащих координаты точки схода. При тестировании изображения аугментируются поворотом.
+## Response Format
 
-## Формат ответа
-
-В качестве алгоритм выдает json файл вида:
+As a result, the algorithm returns a JSON file in the format:
 ```
 {
     "file1.jpg": [x1, y1], 
@@ -24,15 +18,53 @@
 }
 ```
 
-## Генерация тестовой выборки
+## Test Sample Generation
 
-Для генерации тестовой выборки используется скрипт test_generation/test_generation.py:
+The test sample is generated using the script test_generation/test_generation.py:
 
 ```bash
-python test_generation/test_generation.py --s path_to_dataset --d path_to_save_new_dataset --num num_if_imgs_to_generate --seed seed
+python test_generation/test_generation.py --s path_to_dataset --d path_to_save_new_dataset --num num_of_imgs_to_generate --seed seed
 ```
 
-Предполагается, что папка с данными устроена следующим образом:
-- dataset
--     markup.json
--     source
+It is assumed that the data folder is structured as follows:
+
+```
+├── dataset
+    ├── markup.json
+    ├── source
+```
+
+## Solution Quality Assessment
+
+The quality of the solution is assessed using an angular metric. The proximity of the predicted point $A$ to the true value $B$ is determined by the angle $\alpha$ between the vectors drawn to these points from the point $O$, as demonstrated in the figure below.
+
+$$
+\alpha = \arccos \frac{\left \langle \xi, \, \eta \right \rangle}{\|\xi\|\|\eta\|},
+$$
+where
+$$
+\xi = \begin{bmatrix} 
+A_x \\ 
+A_y \\ 
+0
+\end{bmatrix}
+-
+\begin{bmatrix} 
+n/2 \\ 
+m/2 \\ 
+\sqrt{\left( n/2 \right)^2 + \left( m/2 \right)^2} 
+\end{bmatrix}, \quad
+\eta = \begin{bmatrix} 
+B_x \\ 
+B_y \\ 
+0
+\end{bmatrix}
+-
+\begin{bmatrix} 
+n/2 \\ 
+m/2 \\ 
+\sqrt{\left( n/2 \right)^2 + \left( m/2 \right)^2}
+\end{bmatrix}.
+$$
+
+![Metrics](metrics.png)
