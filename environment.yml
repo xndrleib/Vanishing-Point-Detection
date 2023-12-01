@@ -1,0 +1,11 @@
+name: Vanishing-Point-Detection
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - opencv
+  - tqdm
+  - jupyter
+  - matplotlib
+  - pandas
