@@ -69,7 +69,7 @@ def calculate_upper_left(ul, bl, ur):
     x = ul[0] if ul[0] > bl[0] else bl[0]
     x = 0 if x < 0 else x
 
-    return (int(y), int(x))
+    return int(y), int(x)
 
 
 def calculate_bottom_right(ur, br, bl):
@@ -79,18 +79,17 @@ def calculate_bottom_right(ur, br, bl):
     x = ur[0] if ur[0] < br[0] else br[0]
     x = 300 if x > 300 else x
 
-    return (int(y), int(x))
+    return int(y), int(x)
 
 
 def calculate_roi(R, img_size):
     height, width, _ = img_size
 
     # NOTE: here points is described in (x,y) order
-    vertices = {}
-    vertices['upper_left'] = [0, 0]
-    vertices['upper_right'] = [width - 1, 0]
-    vertices['bottom_left'] = [0, height - 1]
-    vertices['bottom_right'] = [width - 1, height - 1]
+    vertices = {'upper_left': [0, 0],
+                'upper_right': [width - 1, 0],
+                'bottom_left': [0, height - 1],
+                'bottom_right': [width - 1, height - 1]}
 
     rotated_vertices = {}
     for key, val in vertices.items():
@@ -173,7 +172,7 @@ def generate_test(dst_path, markup, fnames, src_path, seed):
     new_markup = {}
     for file, phi, theta, dx, dy in list_to_iterate:
         img = cv2.imread(os.path.join(src_path, 'source/', file))
-        answer = markup[file]  # currently wrong
+        answer = markup[file]
         T = generate_matrix(phi, theta, dx, dy, img.shape)
         transformed_img, scale, roi = transform_img(img, T)
         transformed_answer = transform_answer(answer, T, scale, roi)
@@ -183,11 +182,15 @@ def generate_test(dst_path, markup, fnames, src_path, seed):
     save_markup(dst_path, new_markup)
 
 
-def generate_ds(dst_path, src_path, num, seed):
+def generate_ds(dst_path, src_path, num, seed, return_fnames=False):
     fnames = read_filenames(src_path)
     markup = read_markup(src_path)
     selected_fnames = select_test_imgs(fnames, num, seed)
     generate_test(dst_path, markup, selected_fnames, src_path, seed)
+
+    if return_fnames:
+        return selected_fnames
+
 
 
 def main():
