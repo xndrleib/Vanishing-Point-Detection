@@ -36,7 +36,9 @@ It is assumed that the data folder is structured as follows:
 
 ## Solution Quality Assessment
 
-The quality of the solution is assessed using an angular metric. The proximity of the predicted point $A$ to the true value $B$ is determined by the angle $\alpha$ between the vectors drawn to these points from the point $O$, as demonstrated in the figure below.
+The quality of the solution is assessed using an angular metric. The proximity of the predicted point $A$ to the true 
+value $B$ is determined by the angle $\alpha$ between the vectors $\xi$ and $\eta$ drawn to these points 
+from the point $O$, as demonstrated in the figure below.
 
 
 $$\alpha = \arccos \frac{\left \langle \xi, \, \eta \right \rangle}{\|\xi\|\|\eta\|},$$
