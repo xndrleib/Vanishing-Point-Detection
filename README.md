@@ -43,7 +43,8 @@ $$\alpha = \arccos \frac{\left \langle \xi, \, \eta \right \rangle}{\|\xi\|\|\et
 
 where
 
-$$\xi = 
+```math
+\xi = 
 \begin{bmatrix} 
 A_x \\ 
 A_y \\ 
@@ -66,6 +67,6 @@ n/2 \\
 m/2 \\ 
 \sqrt{\left( n/2 \right)^2 + \left( m/2 \right)^2}
 \end{bmatrix}.
-$$
+```
 
 ![Metrics](metrics.png)
