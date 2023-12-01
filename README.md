@@ -4,7 +4,7 @@ This repository contains code written for a competition in vanishing point detec
 
 ## Project Description
 
-The task of detecting the vanishing point in images is of great importance and has a wide range of applications. It arises in the development of systems for unmanned vehicles (localization on the road surface, self-calibration), in the analysis of scene lighting (analysis of color histograms), and in correcting projective distortions.
+The task of detecting the vanishing point in images is of great importance and has a wide range of applications. It arises in the development of systems for autonomous vehicles (localization on the road surface, self-calibration), in the analysis of scene lighting (analysis of color histograms), and in correcting projective distortions.
 
 800 labeled images of the road surface from a vehicle camera, containing coordinates of the vanishing point, are used as data for constructing and testing the algorithm. During testing, the images are augmented by rotation.
 
