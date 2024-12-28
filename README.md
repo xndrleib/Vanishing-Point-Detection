@@ -41,7 +41,7 @@ value $B$ is determined by the angle $\alpha$ between the vectors $\xi$ and $\et
 from the point $O$, as demonstrated in the figure below.
 
 
-$$\alpha = \arccos \frac{\left \langle \xi, \, \eta \right \rangle}{\|\xi\|\|\eta\|},$$
+$$\alpha = \arccos \frac{\left \langle \xi, \eta \right \rangle}{\|\xi\| \cdot \|\eta\|},$$
 
 where
 
